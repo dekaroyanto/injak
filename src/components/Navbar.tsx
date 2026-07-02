@@ -41,8 +41,13 @@ export default function Navbar({
   const handleTabClick = (tabId: ActiveTab) => {
     setActiveTab(tabId);
     setIsOpen(false);
-    // Scroll smoothly to top when switching view
-    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, 100);
   };
 
   return (
