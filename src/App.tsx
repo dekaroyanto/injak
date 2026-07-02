@@ -1,23 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ActiveTab } from './types';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import ApaItuPajak from './components/ApaItuPajak';
-import ManfaatPajak from './components/ManfaatPajak';
-import WajibPajak from './components/WajibPajak';
-import CaraBayar from './components/CaraBayar';
-import KuisPajak from './components/KuisPajak';
-import Footer from './components/Footer';
-import { FileText, Gift, Users, CreditCard, Award, ArrowRight, ShieldCheck } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ActiveTab } from "./types";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import ApaItuPajak from "./components/ApaItuPajak";
+import ManfaatPajak from "./components/ManfaatPajak";
+import WajibPajak from "./components/WajibPajak";
+import CaraBayar from "./components/CaraBayar";
+import KuisPajak from "./components/KuisPajak";
+import Footer from "./components/Footer";
+import {
+  FileText,
+  Gift,
+  Users,
+  CreditCard,
+  Award,
+  ArrowRight,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('beranda');
+  const [activeTab, setActiveTab] = useState<ActiveTab>("beranda");
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     // Check if theme exists in localStorage
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
-      return savedTheme === 'dark';
+      return savedTheme === "dark";
     }
     return false;
   });
@@ -25,33 +33,40 @@ export default function App() {
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDarkMode) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev);
+    setIsDarkMode((prev) => !prev);
   };
 
   const handleQuickTabRedirect = (tabId: ActiveTab) => {
     setActiveTab(tabId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <div id="injak-app" className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-between font-sans selection:bg-yellow-400 selection:text-slate-950 transition-colors duration-300">
-      
+    <div
+      id="injak-app"
+      className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-between font-sans selection:bg-yellow-400 selection:text-slate-950 transition-colors duration-300"
+    >
       {/* Navigation Header */}
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+      />
 
       {/* Main Content Render Area */}
       <main className="flex-grow">
         <AnimatePresence mode="wait">
-          {activeTab === 'beranda' && (
+          {activeTab === "beranda" && (
             <motion.div
               key="beranda-tab"
               initial={{ opacity: 0 }}
@@ -65,12 +80,15 @@ export default function App() {
               {/* Grid of Interactive Quick Info Sections */}
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
-                  <span className="text-amber-600 dark:text-amber-500 font-bold text-xs uppercase tracking-widest block">Menu Eksplorasi</span>
+                  <span className="text-amber-600 dark:text-amber-500 font-bold text-xs uppercase tracking-widest block">
+                    Menu Eksplorasi
+                  </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white">
                     Jelajahi Portal Perpajakan
                   </h2>
                   <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base">
-                    Klik pada kartu kategori di bawah ini untuk langsung menyelami materi edukasi terperinci.
+                    Klik pada kartu kategori di bawah ini untuk langsung
+                    menyelami materi edukasi terperinci.
                   </p>
                 </div>
 
@@ -81,14 +99,18 @@ export default function App() {
                       <div className="bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 p-3 rounded-xl inline-block border border-amber-200/30 dark:border-amber-500/20">
                         <FileText size={20} />
                       </div>
-                      <h3 className="font-bold text-lg text-slate-950 dark:text-white">1. Apa itu Pajak?</h3>
+                      <h3 className="font-bold text-lg text-slate-950 dark:text-white">
+                        1. Apa itu Pajak?
+                      </h3>
                       <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Pahami pengertian formal pajak menurut undang-undang dasar, sifat pemaksaan legal, dan bedanya dengan pungutan retribusi lainnya.
+                        Pahami pengertian formal pajak menurut undang-undang
+                        dasar, sifat pemaksaan legal, dan bedanya dengan
+                        pungutan retribusi lainnya.
                       </p>
                     </div>
                     <button
                       id="card-redirect-definisi"
-                      onClick={() => handleQuickTabRedirect('definisi')}
+                      onClick={() => handleQuickTabRedirect("definisi")}
                       className="text-xs font-bold text-amber-600 dark:text-amber-500 hover:text-amber-700 dark:hover:text-amber-400 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform mt-6 cursor-pointer"
                     >
                       <span>Pelajari Definisi</span>
@@ -102,14 +124,18 @@ export default function App() {
                       <div className="bg-sky-100 dark:bg-sky-500/10 text-sky-700 dark:text-sky-400 p-3 rounded-xl inline-block border border-sky-200/30 dark:border-sky-500/20">
                         <Gift size={20} />
                       </div>
-                      <h3 className="font-bold text-lg text-slate-950 dark:text-white">2. Manfaat Bayar Pajak</h3>
+                      <h3 className="font-bold text-lg text-slate-950 dark:text-white">
+                        2. Manfaat Bayar Pajak
+                      </h3>
                       <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Temukan bagaimana setoran pajak Anda dialokasikan untuk membiayai MRT, beasiswa LPDP, subsidi listrik, hingga jaminan kesehatan BPJS nasional.
+                        Temukan bagaimana setoran pajak Anda dialokasikan untuk
+                        membiayai MRT, beasiswa LPDP, subsidi listrik, hingga
+                        jaminan kesehatan BPJS nasional.
                       </p>
                     </div>
                     <button
                       id="card-redirect-manfaat"
-                      onClick={() => handleQuickTabRedirect('manfaat')}
+                      onClick={() => handleQuickTabRedirect("manfaat")}
                       className="text-xs font-bold text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform mt-6 cursor-pointer"
                     >
                       <span>Lihat Alokasi APBN</span>
@@ -123,17 +149,20 @@ export default function App() {
                       <div className="bg-teal-100 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 p-3 rounded-xl inline-block border border-teal-200/30 dark:border-teal-500/20">
                         <Users size={20} />
                       </div>
-                      <h3 className="font-bold text-lg text-slate-950 dark:text-white">3. Siapa Saja Wajib Pajak</h3>
+                      <h3 className="font-bold text-lg text-slate-950 dark:text-white">
+                        3. Siapa Saja Wajib Pajak
+                      </h3>
                       <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Cari tahu kriteria subjek pajak orang pribadi maupun badan, batas PTKP, serta hitung estimasi pajak penghasilan Anda lewat kalkulator PPh 21.
+                        Cari tahu kriteria subjek pajak orang pribadi maupun
+                        badan, batas PTKP.
                       </p>
                     </div>
                     <button
                       id="card-redirect-subjek"
-                      onClick={() => handleQuickTabRedirect('subjek')}
+                      onClick={() => handleQuickTabRedirect("subjek")}
                       className="text-xs font-bold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform mt-6 cursor-pointer"
                     >
-                      <span>Coba Simulasi Pajak</span>
+                      <span>Lihat Regulasi Pajak</span>
                       <ArrowRight size={14} />
                     </button>
                   </div>
@@ -144,14 +173,18 @@ export default function App() {
                       <div className="bg-violet-100 dark:bg-violet-500/10 text-violet-700 dark:text-violet-400 p-3 rounded-xl inline-block border border-violet-200/30 dark:border-violet-500/20">
                         <CreditCard size={20} />
                       </div>
-                      <h3 className="font-bold text-lg text-slate-950 dark:text-white">4. Alur Cara Bayar Pajak</h3>
+                      <h3 className="font-bold text-lg text-slate-950 dark:text-white">
+                        4. Alur Cara Bayar Pajak
+                      </h3>
                       <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Simulasi panduan interaktif step-by-step dari membuat NPWP online, mengunduh ID Billing e-SSE, transfer pembayaran, hingga lapor SPT tahunan.
+                        Simulasi panduan interaktif step-by-step dari membuat
+                        NPWP online, mengunduh ID Billing e-SSE, transfer
+                        pembayaran, hingga lapor SPT tahunan.
                       </p>
                     </div>
                     <button
                       id="card-redirect-cara-bayar"
-                      onClick={() => handleQuickTabRedirect('cara-bayar')}
+                      onClick={() => handleQuickTabRedirect("cara-bayar")}
                       className="text-xs font-bold text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform mt-6 cursor-pointer"
                     >
                       <span>Ikuti Alur Panduan</span>
@@ -165,14 +198,18 @@ export default function App() {
                       <div className="bg-yellow-400/10 text-yellow-400 p-3 rounded-xl inline-block border border-yellow-400/20">
                         <Award size={20} />
                       </div>
-                      <h3 className="font-bold text-lg text-white">5. Asah Pengetahuan</h3>
+                      <h3 className="font-bold text-lg text-white">
+                        5. Asah Pengetahuan
+                      </h3>
                       <p className="text-slate-400 text-sm leading-relaxed">
-                        Uji wawasan finansial Anda seputar hak dan kewajiban wajib pajak dalam kuis edukatif singkat ini dan tunjukkan kecerdasan finansial Anda.
+                        Uji wawasan finansial Anda seputar hak dan kewajiban
+                        wajib pajak dalam kuis edukatif singkat ini dan
+                        tunjukkan kecerdasan finansial Anda.
                       </p>
                     </div>
                     <button
                       id="card-redirect-kuis"
-                      onClick={() => handleQuickTabRedirect('kuis')}
+                      onClick={() => handleQuickTabRedirect("kuis")}
                       className="text-xs font-bold text-yellow-400 hover:text-yellow-300 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform mt-6 cursor-pointer"
                     >
                       <span>Mulai Kuis Sekarang</span>
@@ -187,9 +224,13 @@ export default function App() {
                       <div className="bg-slate-900 border border-slate-800 text-yellow-500 p-3 rounded-xl inline-block">
                         <ShieldCheck size={20} />
                       </div>
-                      <h3 className="font-bold text-lg">Mengapa Sadar Pajak Penting?</h3>
+                      <h3 className="font-bold text-lg">
+                        Mengapa Sadar Pajak Penting?
+                      </h3>
                       <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                        Kesadaran pajak tinggi meminimalkan ketergantungan utang luar negeri, menstabilkan pertumbuhan fiskal, dan merealisasikan kedaulatan kemandirian bangsa seutuhnya.
+                        Kesadaran pajak tinggi meminimalkan ketergantungan utang
+                        luar negeri, menstabilkan pertumbuhan fiskal, dan
+                        merealisasikan kedaulatan kemandirian bangsa seutuhnya.
                       </p>
                     </div>
                     <span className="text-[10px] text-slate-500 font-mono tracking-wider mt-4 block">
@@ -201,7 +242,7 @@ export default function App() {
             </motion.div>
           )}
 
-          {activeTab === 'definisi' && (
+          {activeTab === "definisi" && (
             <motion.div
               key="definisi-tab"
               initial={{ opacity: 0 }}
@@ -213,7 +254,7 @@ export default function App() {
             </motion.div>
           )}
 
-          {activeTab === 'manfaat' && (
+          {activeTab === "manfaat" && (
             <motion.div
               key="manfaat-tab"
               initial={{ opacity: 0 }}
@@ -225,7 +266,7 @@ export default function App() {
             </motion.div>
           )}
 
-          {activeTab === 'subjek' && (
+          {activeTab === "subjek" && (
             <motion.div
               key="subjek-tab"
               initial={{ opacity: 0 }}
@@ -237,7 +278,7 @@ export default function App() {
             </motion.div>
           )}
 
-          {activeTab === 'cara-bayar' && (
+          {activeTab === "cara-bayar" && (
             <motion.div
               key="cara-bayar-tab"
               initial={{ opacity: 0 }}
@@ -249,7 +290,7 @@ export default function App() {
             </motion.div>
           )}
 
-          {activeTab === 'kuis' && (
+          {activeTab === "kuis" && (
             <motion.div
               key="kuis-tab"
               initial={{ opacity: 0 }}
