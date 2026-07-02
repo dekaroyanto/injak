@@ -55,10 +55,6 @@ export default function CaraBayar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center space-y-4 max-w-2xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold uppercase tracking-wider">
-            <Sparkles size={12} className="text-amber-600" />
-            <span>Panduan Praktis Digital</span>
-          </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white">
             Alur Langkah Pembayaran Pajak
           </h2>
