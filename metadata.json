@@ -1,0 +1,6 @@
+{
+  "name": "INJAK (Informasi Pajak)",
+  "description": "Platform edukasi perpajakan interaktif mengenai apa itu pajak, manfaat, subjek pajak, dan tata cara pembayaran dengan kalkulator simulasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
