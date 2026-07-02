@@ -43,7 +43,7 @@ export default function Hero({ setActiveTab }: HeroProps) {
   return (
     <div
       id="injak-hero"
-      className="relative overflow-hidden bg-slate-950 py-6 text-white border-b border-slate-900"
+      className="relative overflow-hidden bg-slate-950 py-10 text-white border-b border-slate-900"
     >
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-40"></div>
 
